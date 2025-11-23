@@ -20,9 +20,6 @@ def autoexec():
     else:
         os.system('mkdir mods') # Creates mods folder
 
-    python_file_list = get_python_files_in_folder(modfolder_path)
-    modlist = python_file_list
-
 def cmds():
     # Mod loading stuff
     
@@ -47,9 +44,12 @@ def cmds():
                 print("Starting...")
                 exec(f"from mods import {wowsh[5:].translate(str.maketrans("", "", "\""))}\n{wowsh[5:].translate(str.maketrans("", "", "\""))}.__modStart()")
             elif wowsh == "wowget":
-                print("Error: \"Not ready\".") 
-                print("Note: WowGet is in the works.")
+                print("What app do you want?")
+                wowget = input("WowGet > ")
+                print(f"{os.getcwd()}\\mods\\")
+                os.system(f"curl -o {os.getcwd()}\\mods\\{wowget}.py https://raw.githubusercontent.com/MooniiCodes/WoWGet/refs/heads/main/repo/{wowget}.py")
             else:
                 pass
     else:
         out = True
+
